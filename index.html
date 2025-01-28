@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: 'Edwardian script ITC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FFD1DC, #FFA6C1, #FFB3D9);
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .card {
+            background: linear-gradient(135deg, #FFF6F9, #FFDEE9);
+            border-radius: 20px;
+            padding: 30px 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            text-align: center;
+            border: 2px solid #FF88B2;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+            color: #FF4682;
+            text-shadow: 2px 2px #FFA6C1;
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: #FF6699;
+        }
+        button {
+            background-color: #FF88B2;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 102, 153, 0.4);
+        }
+        button:hover {
+            background-color: #FF6699;
+            box-shadow: 0 6px 15px rgba(255, 102, 153, 0.6);
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle, #FF88B2, #FF4E7A);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 5s ease-in-out infinite;
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 2px;
+            height: 50px;
+            background: #FF4E7A;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+            }
+        }
+        .hidden-message {
+            font-size: 4rem;
+            color: #FF4682;
+            text-shadow: 2px 2px 8px #FF6699;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: 100;
+            animation: pop-in 1s forwards, fade-out 1s 3s forwards;
+        }
+        @keyframes pop-in {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        @keyframes fade-out {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="surprise" class="hidden-message">🎉 Happy Birthday! 🎈</div>
+    <div class="container" id="main-content">
+        <div class="card">
+            <h1>Happy Birthday, Anshi!</h1>
+            <p>Dear babyji,</p>
+            <p>Words can't describe how much you mean to me. On your special day, I want you to know how much I love you and cherish every moment we spend together. 💖</p>
+            <p>Remember, you are one of the kindest, strongest, and most beautiful souls I've ever known. Don't ever let the world dim your light because you shine brighter than anyone else. And whenever life feels tough, just know that I've got your back—always and forever. 🌟</p>
+            <p>So forget the rest of the world today and let’s celebrate YOU—your awesomeness, your laughter, and your incredible heart. I'm so lucky to have you in my life, and I promise to always be by your side no matter what. 🥰</p>
+            <p>Happy Birthday once again! Let’s make this day unforgettable! 🎂🎁</p>
+            <button onclick="showBalloons()">Click for More Balloons!</button>
+        </div>
+    </div>
+    <script>
+        const surpriseMessage = document.getElementById('surprise');
+        const mainContent = document.getElementById('main-content');
+
+        window.onload = () => {
+            surpriseMessage.style.opacity = '1';
+            setTimeout(() => {
+                surpriseMessage.style.opacity = '0';
+                mainContent.style.opacity = '1';
+            }, 4000); // 3 seconds visible + 1 second fade-out
+        };
+
+        function showBalloons() {
+            const body = document.body;
+            for (let i = 0; i < 20; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = Math.random() * 100 + '%';
+                balloon.style.bottom = '-' + Math.random() * 100 + 'px';
+                balloon.style.animationDelay = Math.random() * 3 + 's';
+                balloon.style.animationDuration = 4 + Math.random() * 2 + 's';
+                body.appendChild(balloon);
+            }
+        }
+    </script>
+</body>
+</html>
